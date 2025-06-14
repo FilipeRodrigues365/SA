@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de Participantes</title>
+</head>
+<body>
+  <h1>Registro de Participantes</h1>
+  <input type="text" id="nomeInput" placeholder="Digite o nome">
+  <button onclick="adicionarNome()">Adicionar</button>
+  <ul id="listaNomes"></ul>
+
+  <script>
+    const nomes = [];
+
+    function adicionarNome() {
+      const nome = document.getElementById("nomeInput").value.trim();
+      if (nome) {
+        nomes.push(nome);
+        nomes.sort();
+        mostrarNomes();
+        document.getElementById("nomeInput").value = '';
+      }
+    }
+
+    function mostrarNomes() {
+      const lista = document.getElementById("listaNomes");
+      lista.innerHTML = '';
+      nomes.forEach(function(nome) {
+        const item = document.createElement("li");
+        item.textContent = nome;
+        lista.appendChild(item);
+      });
+    }
+  </script>
+</body>
+</html>
